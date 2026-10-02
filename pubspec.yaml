@@ -1,0 +1,27 @@
+name: notes_offline_demo
+description: >
+  Demo de estrategias de caché y sincronización offline en Flutter.
+  Charla: Estrategias de Caché y Sincronización Offline.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.3.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  hive: ^2.2.3               # Caché local NoSQL (base de datos embebida)
+  hive_flutter: ^1.1.0
+  connectivity_plus: ^6.0.5  # Detección de estado de red en tiempo real
+  uuid: ^4.4.0                # Generación de ids locales para escrituras offline
+  http: ^1.2.2                 # Cliente HTTP para consumir la API real (JSONBin)
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  hive_generator: ^2.0.1
+  build_runner: ^2.4.11
+
+flutter:
+  uses-material-design: true
