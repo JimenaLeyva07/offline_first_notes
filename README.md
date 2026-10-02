@@ -163,29 +163,6 @@ prefiere REST por recurso (como MockAPI) o un control de versiones
    arriba, y señalar `pollInterval` en `NotesRepository` como el lugar
    para ajustar qué tan "en vivo" se siente la sincronización.
 
----
-
-## Alternativa: usar MockAPI.io en vez de JSONBin
-
-El proyecto incluye también `lib/data/remote/notes_remote_datasource_mockapi.dart`,
-con REST real por recurso y sin necesidad de key. Para activarlo:
-
-1. Completa `mockApiBaseUrl` en `api_config.dart` (instrucciones de
-   registro dentro del propio archivo).
-2. En `lib/main.dart`, cambia la instancia que se le pasa a
-   `NotesRepository`:
-   ```dart
-   remote: NotesRemoteDataSourceMockApi(), // en vez de NotesRemoteDataSource()
-   ```
-   y agrega el import correspondiente.
-3. A diferencia de JSONBin, MockAPI asigna su propio `id` al crear un
-   recurso, distinto del `uuid` local usado para la escritura
-   optimista offline — por eso `SyncQueue.drain()` ya llama a
-   `NotesLocalDataSource.replaceId()` en vez de `upsert()` al procesar
-   un `pendingCreate`. Con JSONBin ese mismo código es un no-op (los
-   ids ya coinciden), así que sirve para ambos backends sin ramas
-   condicionales — es un buen punto para mostrar en vivo el contraste
-   entre los dos enfoques si el tiempo de la charla lo permite.
 
 ## Estrategias que ilustra este proyecto
 
